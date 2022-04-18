@@ -20,7 +20,7 @@
   "text.autoconfig.more_tooltips.option.LightLevel": "Light Level",
 
   "_comment": "Tooltips",
-  "tooltip.more_tooltips.burnTime": "Burn Time:",
+  "tooltip.more_tooltips.burnTime": "Burn Time: %d ticks",
   "tooltip.more_tooltips.burnTime.suffix": "ticks",
   "tooltip.more_tooltips.durability": "Durability:",
   "tooltip.more_tooltips.hunger": "Hunger:",

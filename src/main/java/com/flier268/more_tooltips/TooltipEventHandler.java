@@ -7,6 +7,7 @@ import java.util.Map;
 
 import me.shedaniel.autoconfig.AutoConfig;
 import net.fabricmc.fabric.api.client.item.v1.ItemTooltipCallback;
+import net.fabricmc.fabric.api.registry.FuelRegistry;
 import net.minecraft.block.ComposterBlock;
 import net.minecraft.block.entity.AbstractFurnaceBlockEntity;
 import net.minecraft.client.MinecraftClient;
@@ -96,17 +97,13 @@ public class TooltipEventHandler {
 
             // Tooltip - Burn Time
             if (config.BurnTime.isShown(isShiftDown, config.debug)) {
-                if (ItemTags.getTagGroup().getTags().size() > 0) {
-                    if (TooltipEventHandler.FuelTimeMap == null)
-                        TooltipEventHandler.FuelTimeMap = AbstractFurnaceBlockEntity.createFuelTimeMap();
-                    int burnTime = TooltipEventHandler.FuelTimeMap.getOrDefault(item, 0);
-                    if (burnTime > 0) {
-                        String string = new TranslatableText("tooltip.more_tooltips.burnTime")
-                                .append(new LiteralText(" " + decimalFormat.format(burnTime) + " "))
-                                .append(new TranslatableText("tooltip.more_tooltips.burnTime.suffix"))
-                                .getString();
-                        list.addAll(splitToolTip(clientInstance.textRenderer, string, threshold, DARK_GRAY));
-                    }
+                Integer burnTime = FuelRegistry.INSTANCE.get(item);
+                if (burnTime != null && burnTime > 0) {
+                    String string = new TranslatableText("tooltip.more_tooltips.burnTime", burnTime)
+//                            .append(new LiteralText(" " + decimalFormat.format(burnTime) + " "))
+//                            .append(new TranslatableText("tooltip.more_tooltips.burnTime.suffix"))
+                            .getString();
+                    list.addAll(splitToolTip(clientInstance.textRenderer, string, threshold, DARK_GRAY));
                 }
             }
 

@@ -20,7 +20,7 @@
   "text.autoconfig.more_tooltips.option.LightLevel": "亮度",
 
   "_comment": "Tooltips",
-  "tooltip.more_tooltips.burnTime": "燃燒時間:",
+  "tooltip.more_tooltips.burnTime": "燃燒時間: %d 刻",
   "tooltip.more_tooltips.burnTime.suffix": "刻",
   "tooltip.more_tooltips.durability": "耐久度:",
   "tooltip.more_tooltips.hunger": "飢餓度:",
